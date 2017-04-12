@@ -28,7 +28,13 @@
 	<context:component-scan base-package="com.fxd.ssm.*"/>
 	
 	<!-- 如果当前请求路径是"/"，则直接跳转到"/index.jsp",且不经过控制器 -->
-	<mvc:view-controller path="/" view-name="redirect:/index.jsp"/>
+	<mvc:view-controller path="/" view-name="redirect:index.jsp"/>
+	<!-- 
+		<mvc:annotation-driven/>是一种简写形式，相当于注册了DefaultAnnotationHandlerMapping
+		和AnnotationMethodHandlerAdapter两个bean，配置一些messageconverter。
+		即解决了@Controller注解的使用前提配置。可手动配置
+	 -->
+	<mvc:annotation-driven/>
 	
 	<!-- 配置试图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -42,10 +48,10 @@
 	<!-- 配置数据源 -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="${driver}"/>
-		<property name="url" value="${url}"/>
-		<property name="username" value="${username}"/>
-		<property name="password" value="${password}"/>
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
 	</bean>
 	
 	<!-- 配置mybatis的sqlSessionFactory -->
@@ -85,7 +91,7 @@
 	<!-- shiro过滤器 -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/login" />
+		<property name="loginUrl" value="/index" />
 		<property name="successUrl" value="/home" />
 		<property name="filters">
 			<util:map>
@@ -94,7 +100,8 @@
 		</property>
 		<property name="filterChainDefinitions">
 			<value>
-				/login = authc
+				/index = anon
+				/login = anon
 				/logout = logout
 				/user/forgetPasswordUI = anon
 				/user/forgetPassword = anon
