@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fxd.ssm.dao.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.fxd.ssm.entity.Goods" >
+    <id column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="contrac_goods_name" property="contracGoodsName" jdbcType="VARCHAR" />
+    <result column="measure_unit" property="measureUnit" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.fxd.ssm.entity.Goods" extends="BaseResultMap" >
+    <result column="goods_description" property="goodsDescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    goods_id, contrac_goods_name, measure_unit
+  </sql>
+  <sql id="Blob_Column_List" >
+    goods_description
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.fxd.ssm.entity.GoodsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fxd.ssm.entity.GoodsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fxd.ssm.entity.GoodsExample" >
+    delete from t_goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fxd.ssm.entity.Goods" >
+    insert into t_goods (goods_id, contrac_goods_name, measure_unit, 
+      goods_description)
+    values (#{goodsId,jdbcType=INTEGER}, #{contracGoodsName,jdbcType=VARCHAR}, #{measureUnit,jdbcType=VARCHAR}, 
+      #{goodsDescription,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fxd.ssm.entity.Goods" >
+    insert into t_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="contracGoodsName != null" >
+        contrac_goods_name,
+      </if>
+      <if test="measureUnit != null" >
+        measure_unit,
+      </if>
+      <if test="goodsDescription != null" >
+        goods_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="contracGoodsName != null" >
+        #{contracGoodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="measureUnit != null" >
+        #{measureUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDescription != null" >
+        #{goodsDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fxd.ssm.entity.GoodsExample" resultType="java.lang.Integer" >
+    select count(*) from t_goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_goods
+    <set >
+      <if test="record.goodsId != null" >
+        goods_id = #{record.goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.contracGoodsName != null" >
+        contrac_goods_name = #{record.contracGoodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.measureUnit != null" >
+        measure_unit = #{record.measureUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsDescription != null" >
+        goods_description = #{record.goodsDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update t_goods
+    set goods_id = #{record.goodsId,jdbcType=INTEGER},
+      contrac_goods_name = #{record.contracGoodsName,jdbcType=VARCHAR},
+      measure_unit = #{record.measureUnit,jdbcType=VARCHAR},
+      goods_description = #{record.goodsDescription,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_goods
+    set goods_id = #{record.goodsId,jdbcType=INTEGER},
+      contrac_goods_name = #{record.contracGoodsName,jdbcType=VARCHAR},
+      measure_unit = #{record.measureUnit,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fxd.ssm.entity.Goods" >
+    update t_goods
+    <set >
+      <if test="contracGoodsName != null" >
+        contrac_goods_name = #{contracGoodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="measureUnit != null" >
+        measure_unit = #{measureUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDescription != null" >
+        goods_description = #{goodsDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fxd.ssm.entity.Goods" >
+    update t_goods
+    set contrac_goods_name = #{contracGoodsName,jdbcType=VARCHAR},
+      measure_unit = #{measureUnit,jdbcType=VARCHAR},
+      goods_description = #{goodsDescription,jdbcType=LONGVARCHAR}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fxd.ssm.entity.Goods" >
+    update t_goods
+    set contrac_goods_name = #{contracGoodsName,jdbcType=VARCHAR},
+      measure_unit = #{measureUnit,jdbcType=VARCHAR}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+</mapper>

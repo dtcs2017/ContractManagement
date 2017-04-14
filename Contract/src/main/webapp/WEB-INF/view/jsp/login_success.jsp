@@ -3,13 +3,14 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ tagliburi="http://shiro.apache.org/tags" prefix="shiro" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'login_success.jsp' starting page</title>
+    <title>首页</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,6 +24,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    登录成功！欢迎使用！
+    登录成功！欢迎使用！</br>
+    <shiro:hasRole name="admin">
+    	拥有admin角色！</br>
+    </shiro:hasRole>
+    <shiro:hasPermission name="user:create">
+    	拥有角色创建权限！
+    </shiro:hasPermission>
   </body>
 </html>

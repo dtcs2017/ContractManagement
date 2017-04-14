@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fxd.ssm.dao.AuthorityMapper" >
+  <resultMap id="BaseResultMap" type="com.fxd.ssm.entity.Authority" >
+    <id column="authority_id" property="authorityId" jdbcType="INTEGER" />
+    <result column="authority_name" property="authorityName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.fxd.ssm.entity.Authority" extends="BaseResultMap" >
+    <result column="authority_description" property="authorityDescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    authority_id, authority_name
+  </sql>
+  <sql id="Blob_Column_List" >
+    authority_description
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.fxd.ssm.entity.AuthorityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_authority
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fxd.ssm.entity.AuthorityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_authority
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_authority
+    where authority_id = #{authorityId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_authority
+    where authority_id = #{authorityId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fxd.ssm.entity.AuthorityExample" >
+    delete from t_authority
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fxd.ssm.entity.Authority" >
+    insert into t_authority (authority_id, authority_name, authority_description
+      )
+    values (#{authorityId,jdbcType=INTEGER}, #{authorityName,jdbcType=VARCHAR}, #{authorityDescription,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fxd.ssm.entity.Authority" >
+    insert into t_authority
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="authorityId != null" >
+        authority_id,
+      </if>
+      <if test="authorityName != null" >
+        authority_name,
+      </if>
+      <if test="authorityDescription != null" >
+        authority_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="authorityId != null" >
+        #{authorityId,jdbcType=INTEGER},
+      </if>
+      <if test="authorityName != null" >
+        #{authorityName,jdbcType=VARCHAR},
+      </if>
+      <if test="authorityDescription != null" >
+        #{authorityDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fxd.ssm.entity.AuthorityExample" resultType="java.lang.Integer" >
+    select count(*) from t_authority
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_authority
+    <set >
+      <if test="record.authorityId != null" >
+        authority_id = #{record.authorityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.authorityName != null" >
+        authority_name = #{record.authorityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authorityDescription != null" >
+        authority_description = #{record.authorityDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update t_authority
+    set authority_id = #{record.authorityId,jdbcType=INTEGER},
+      authority_name = #{record.authorityName,jdbcType=VARCHAR},
+      authority_description = #{record.authorityDescription,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_authority
+    set authority_id = #{record.authorityId,jdbcType=INTEGER},
+      authority_name = #{record.authorityName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fxd.ssm.entity.Authority" >
+    update t_authority
+    <set >
+      <if test="authorityName != null" >
+        authority_name = #{authorityName,jdbcType=VARCHAR},
+      </if>
+      <if test="authorityDescription != null" >
+        authority_description = #{authorityDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where authority_id = #{authorityId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fxd.ssm.entity.Authority" >
+    update t_authority
+    set authority_name = #{authorityName,jdbcType=VARCHAR},
+      authority_description = #{authorityDescription,jdbcType=LONGVARCHAR}
+    where authority_id = #{authorityId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fxd.ssm.entity.Authority" >
+    update t_authority
+    set authority_name = #{authorityName,jdbcType=VARCHAR}
+    where authority_id = #{authorityId,jdbcType=INTEGER}
+  </update>
+</mapper>

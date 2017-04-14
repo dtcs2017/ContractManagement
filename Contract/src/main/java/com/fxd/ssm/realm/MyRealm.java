@@ -5,6 +5,7 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,11 @@ public class MyRealm extends AuthorizingRealm {
 	
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		
-		return null;
+		String userName=(String) principals.getPrimaryPrincipal();
+		SimpleAuthorizationInfo authorizationInfo=new SimpleAuthorizationInfo();
+		authorizationInfo.setRoles(userService.getRolesByName(userName));
+		authorizationInfo.setStringPermissions(userService.getAuthoritisByName(userName));
+		return authorizationInfo;
 	}
 
 	@Override
