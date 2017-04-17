@@ -162,7 +162,13 @@
 	    <artifactId>aspectjweaver</artifactId>
 	    <version>1.8.9</version>
 	</dependency>
-  	
+	<!-- 引入mybatis分页插件，添加分页支持 -->
+  	<!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+	<dependency>
+	    <groupId>com.github.pagehelper</groupId>
+	    <artifactId>pagehelper</artifactId>
+	    <version>4.1.6</version>
+	</dependency>
   </dependencies>
   <build>
     <finalName>Contract</finalName>

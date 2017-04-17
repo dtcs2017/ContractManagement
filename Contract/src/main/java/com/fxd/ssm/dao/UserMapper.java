@@ -1,5 +1,6 @@
 package com.fxd.ssm.dao;
 
+import com.fxd.ssm.dto.UserDTO;
 import com.fxd.ssm.entity.User;
 import com.fxd.ssm.entity.UserExample;
 import java.util.List;
@@ -37,4 +38,6 @@ public interface UserMapper {
 	Set<String> selectRolesByUserName(String userName);
 
 	Set<String> selectAuthoritiesByUserName(String userName);
+
+	List<UserDTO> getUserList();
 }

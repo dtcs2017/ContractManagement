@@ -6,6 +6,10 @@ import com.fxd.ssm.service.UserService;
 import com.fxd.ssm.entity.User;
 
 public class BaseController {
+	
+	protected static final String PAGE_NO = "1";
+	protected static final String PAGE_SIZE = "10";
+	
 	@Autowired
 	protected UserService userService;
 	

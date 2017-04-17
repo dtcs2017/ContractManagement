@@ -1,9 +1,9 @@
-package com.fxd.ssm.entity;
+package com.fxd.ssm.dto;
 
 import java.util.Date;
 
-public class User {
-    private Long userId;
+public class UserDTO {
+	private Long userId;
 
     private Long roleId;
 
@@ -22,6 +22,16 @@ public class User {
     private Date modifyTime;
 
     private String userState;
+    
+    public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	private String roleName;
 
     public Long getUserId() {
         return userId;

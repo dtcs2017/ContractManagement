@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> 系统管理 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                    	<li><a href="jsp/userList.jsp">用户列表</a></li>
+                    	<li><a href="user/userList">用户列表</a></li>
                     	<li><a href="index.html">角色列表</a></li>
                     	<li><a href="index.html">权限列表</a></li>
                       <li><a href="index.html">Dashboard</a></li>
