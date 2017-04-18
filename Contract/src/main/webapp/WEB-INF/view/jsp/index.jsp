@@ -27,7 +27,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- Bootstrap -->
     <link href="${contract}/resources/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="${contract}/resources/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <%-- <link href="${contract}/resources/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet"> --%>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="${contract}/resources/plugins/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->

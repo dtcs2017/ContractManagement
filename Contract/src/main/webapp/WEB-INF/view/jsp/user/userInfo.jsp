@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>用户列表</title>
+    <title>用户信息</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -24,7 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	
 	<!-- Bootstrap -->
     <link href="resources/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -230,255 +229,71 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!-- /top navigation -->
 	        
         <!-- page content -->
-    	<div class="right_col" role="main">
+        <div class="right_col">
     	  <div class="">
     	    <div class="clearfix"></div>
     		<div class="row">
-    		  <!-- table plush design -->
-    		  <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="x_panel">
-            <div class="x_title">
-              <h2>用户列表</small></h2>
-              <ul class="nav navbar-right panel_toolbox">
-                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Settings 1</a>
-                    </li>
-                    <li><a href="#">Settings 2</a>
-                    </li>
-                  </ul>
-                </li>
-                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                </li>
-              </ul>
-              <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-              <div class="well" style="overflow: auto">
-                <form action="#" class="form-horizontal" >
-                  <div class="col-sm-3" style="margin-left:-10px">
-                    <label>用户角色</label>
-                    <select class="form-control input-sm">
-                      <option value="">请选择</option>
-                      <option value="">付晓东</option>
-                      <option value="">付晓东</option>
-                    </select>
-                  </div>
-                  <div class="col-sm-4">
-                    <label>所属公司</label>
-                    <select class="form-control input-sm">
-                      <option value="">请选择</option>
-                      <option value="">付晓东</option>
-                      <option value="">付晓东</option>
-                    </select>
-                  </div>
-                  <div class="col-sm-4">
-                    <label>用户名、真实姓名、联系电话</label>
-                    <div class="input-group">
-                      <input class="form-control input-sm" type="text">
-                      <span class="input-group-btn">
-                        <button class="btn btn-primary input-sm" type="button">查询</button>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="col-sm-1">
-                    <br>
-                    <button class="btn btn-primary input-sm" type="reset" style="margin-top:5px;">重置选项</button>
-                  </div>
-              	</form>
-              </div>
-              
-              <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-              	<div class="row">
-              	  <div class="col-sm-6">
-              	    <div class="dataTables_length">
-	              	    <label>
-	              	    Show
-	              	    <select class="form-control input-sm">
-	              	      <option value="10">10</option>
-	              	      <option value="20">20</option>
-	              	      <option value="50">50</option>
-	              	      <option value="100">100</option>
-	              	    </select>
-	              	    entries
-	              	    </label>
-              	    </div>
-              	  </div>
-              	  <div class="col-sm-6">
-              	    <div class="dataTables_filter">
-              	      <label>
-              	        Search:
-              	        <input class="form-control input-sm" aria-controls="datatable-checkbox" type="search"/>
-              	      </label>
-              	    </div>
-              	  </div>
-              	</div>
-              	<div class="row">
-              	  <div class="col-sm-12">
-              	    <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
-	                <thead>
-	                  <tr class="headings">
-	                    <th>
-	                    <th>
-	                      <div class="icheckbox_flat-green" style="position: relative;">
-	                        <input type="checkbox" id="check-all" class="flat">
-	                      </div>
-	                    </th>
-	                    <th class="column-title">用户名 </th>
-	                    <th class="column-title">真实姓名 </th>
-	                    <th class="column-title">用户角色 </th>
-	                    <th class="column-title">联系电话 </th>
-	                    <th class="column-title">邮箱 </th>
-	                    <th class="column-title">创建时间 </th>
-	                    <th class="column-title">修改时间 </th>
-	                    <th class="column-title no-link last"><span class="nobr">Action</span>
-	                    </th>
-	                    <th class="bulk-actions" colspan="7">
-	                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-	                    </th>
-	                  </tr>
-	                </thead>
-	
-	
-	                <tbody>
-	                  <c:choose>
-	                    <c:when test="${empty uList }">
-	                      <tr>
-	                       	<td colspan="10">暂无数据</td>
-	                   	  </tr>
-	                      </c:when>
-	                     	<c:otherwise>
-	                     	  <c:forEach items="${uList}" var="user" varStatus="status">
-	                     		<c:if test="${status.count%2==0 }">
-	                     		  <tr class="even pointer">
-	                     		    <td></td>
-	                     		    <th>
-	                     		      <div class="icheckbox_flat-green" style="position: relative;">
-	                     		        <input type="checkbox" class="flat"/>
-	                     		      </div>
-	                     		    </th>
-				                    <td>${user.userName }</td>
-				                    <td>${user.realName }</td>
-				                    <td>${user.roleName }</td>
-		                            <td>${user.phoneNumber }</td>
-		                            <td>${user.email }</td>
-		                            <td>
-		                              <fmt:formatDate  value="${user.createTime}" type="Date" pattern="yyyy.MM.dd HH:mm:ss" />
-		                            </td>
-		                            <td>
-		                           	  <fmt:formatDate  value="${user.modifyTime}" type="Date" pattern="yyyy.MM.dd HH:mm:ss" />
-		                            </td>
-				                    <td class=" last">
-				                      <div class="btn-group">
-				                        <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="View" href="user/viewUser?userId=${user.userId }">
-		                                  <i class="fa fa-eye"></i>
-		                                </a>
-		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Edit" href="user/viewUser?userId=${user.userId }">
-		                                  <i class="fa fa-pencil"></i>
-		                                </a>
-		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Delete" href="user/viewUser?userId=${user.userId }">
-		                                  <i class="fa fa-trash"></i>
-		                                </a>
-		                              </div>
-				                    </td>
-	                     		  </tr>
-	                     	    </c:if>
-	                     		<c:if test="${status.count%2!=0 }">
-	                     		  <tr class="even pointer">
-	                     			<td></td>
-	                     		    <th>
-	                     		      <div class="icheckbox_flat-green" style="position: relative;">
-	                     		        <input type="checkbox" class="flat"/>
-	                     		      </div>
-	                     		    </th>
-		                            <td>${user.userName }</td>
-		                            <td>${user.realName }</td>
-		                            <td>${user.roleName }</td>
-		                            <td>${user.phoneNumber }</td>
-		                            <td>${user.email }</td>
-		                            <td>
-		                              <fmt:formatDate  value="${user.createTime}" type="Date" pattern="yyyy.MM.dd HH:mm:ss" />
-		                            </td>
-		                            <td>
-		                           	  <fmt:formatDate  value="${user.modifyTime}" type="Date" pattern="yyyy.MM.dd HH:mm:ss" />
-		                            </td>
-		                            <td class=" last">
-		                              <div class="btn-group">
-		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="View" href="user/viewUser?userId=${user.userId }">
-		                                  <i class="fa fa-eye"></i>
-		                                </a>
-		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Edit" href="user/viewUser?userId=${user.userId }">
-		                                  <i class="fa fa-pencil"></i>
-		                                </a>
-		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Delete" href="user/viewUser?userId=${user.userId }">
-		                                  <i class="fa fa-trash"></i>
-		                                </a>
-		                              </div>
-		                            </td>
-                    			  </tr>
-	                     		</c:if>
-	                     	  </c:forEach>
-	                     	</c:otherwise>
-	                     </c:choose>
-	                  </tbody>
-	                </table>
-              	  </div>
-              	</div>
-              	<div class="row">
-              	  <div class="col-sm-5">
-              	    <div class="dataTables_info" role="status" aria-live="polite">
-              	      showing 1 to 10 of 11 entries.
-              	    </div>
-              	  </div>
-              	  <div class="col-sm-7">
-              	    <div class="dataTables_paginate paging_simple_numbers">
-              	      <ul class="pagination">
-              	        <li class="paginate_button previous disabled">
-              	          <a href="#" aria-controls="datatable-checkbox" data-dt-idx="1" tabindex="0">Previous</a>
-              	        </li>
-              	        <li class="paginate_button active">
-              	          <a href="#" aria-controls="datatable-checkbox" data-dt-idx="1" tabindex="0">1</a>
-              	        </li>
-              	        <li class="paginate_button">
-              	          <a href="#" aria-controls="datatable-checkbox" data-dt-idx="2" tabindex="0">2</a>
-              	        </li>
-              	        <li class="paginate_button">
-              	          <a href="#" aria-controls="datatable-checkbox" data-dt-idx="3" tabindex="0">3</a>
-              	        </li>
-              	        <li class="paginate_button">
-              	          <a href="#" aria-controls="datatable-checkbox" data-dt-idx="4" tabindex="0">4</a>
-              	        </li>
-              	        <li class="paginate_button">
-              	          <a href="#" aria-controls="datatable-checkbox" data-dt-idx="5" tabindex="0">5</a>
-              	        </li>
-              	        <li class="paginate_button">
-              	          <a href="#" aria-controls="datatable-checkbox" data-dt-idx="6" tabindex="0">6</a>
-              	        </li>
-              	        <li class="paginate_button next">
-              	          <a href="#" aria-controls="datatable-checkbox" data-dt-idx="7" tabindex="0">next</a>
-              	        </li>
-              	      </ul>
-              	    </div>
-              	  </div>
-              	</div>
-              </div>
-	              
-            </div>
-          </div>
-        </div>
-    		  <!-- /table plush design -->
-    		
+    		  <div class="col-md-12">
+    		    <div class="x_panel">
+    		      <div class="x_title">
+    		        <h2>用户信息</h2>
+    		        <div class="clearfix"></div>
+    		      </div>
+    		      <div class="x_content">
+    		        <table class="table" style="border:0">
+    		          <tbody>
+    		            <tr>
+    		              <td style="text-align:right">用户名</td>
+    		              <td style="text-align:left">${userInfo.userName }</td>
+    		            </tr>
+    		            <tr>
+    		              <td style="text-align:right">真实姓名</td>
+    		              <td style="text-align:left">${userInfo.realName }</td>
+    		            </tr>
+    		            <tr>
+    		              <td style="text-align:right">用户角色</td>
+    		              <td style="text-align:left">${userInfo.roleName }</td>
+    		            </tr>
+    		            <tr>
+    		              <td style="text-align:right">所属公司</td>
+    		              <td style="text-align:left">################</td>
+    		            </tr>
+    		            <tr>
+    		              <td style="text-align:right">联系电话</td>
+    		              <td style="text-align:left">${userInfo.phoneNumber }</td>
+    		            </tr>
+    		            <tr>
+    		              <td style="text-align:right">电子邮箱</td>
+    		              <td style="text-align:left">${userInfo.email }</td>
+    		            </tr>
+    		            <tr>
+    		              <td style="text-align:right">所属公司</td>
+    		              <td style="text-align:left">################</td>
+    		            </tr>
+    		            <tr>
+    		              <td style="text-align:right">所属公司</td>
+    		              <td style="text-align:left">################</td>
+    		            </tr>
+    		            <tr>
+    		              <td style="text-align:right">所属公司</td>
+    		              <td style="text-align:left">################</td>
+    		            </tr>
+    		            <tr>
+    		              <td style="text-align:right">所属公司</td>
+    		              <td style="text-align:left">################</td>
+    		            </tr>
+    		            <tr>
+    		              <td style="text-align:right">所属公司</td>
+    		              <td style="text-align:left">################</td>
+    		            </tr>
+    		          </tbody>
+    		          
+    		        </table>
+    		      </div>
+    		    </div>
+    		  </div>
+    		</div>
     	  </div>
-    	</div>
        	<!-- /page content -->
        	
        	<!-- footer content -->

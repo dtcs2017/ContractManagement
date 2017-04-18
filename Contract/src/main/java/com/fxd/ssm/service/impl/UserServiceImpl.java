@@ -35,4 +35,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 		return new PageInfo<UserDTO>(list);
 	}
 
+	public UserDTO getUserInfoById(Long userId) {
+		UserDTO userInfo=userMapper.getUserInfoById(userId);
+		return userInfo;
+	}
+
 }

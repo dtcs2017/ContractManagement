@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,5 +33,13 @@ public class UserController extends BaseController {
 		List<UserDTO> uList=page.getList();
 		model.addAttribute("uList", uList);
 		return "user/userList";
+	}
+	
+	@RequestMapping("viewUser")
+	public String getUserInfoById(HttpSession session,ModelMap model,
+			@RequestParam(required = true) Long userId){
+		UserDTO userInfo=userService.getUserInfoById(userId);
+		model.addAttribute("userInfo", userInfo);
+		return "user/userInfo";
 	}
 }

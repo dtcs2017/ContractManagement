@@ -40,4 +40,6 @@ public interface UserMapper {
 	Set<String> selectAuthoritiesByUserName(String userName);
 
 	List<UserDTO> getUserList();
+
+	UserDTO getUserInfoById(Long userId);
 }

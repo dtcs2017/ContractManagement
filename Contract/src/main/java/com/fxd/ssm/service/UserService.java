@@ -14,4 +14,6 @@ public interface UserService {
 	Set<String> getAuthoritisByName(String userName);
 
 	PageInfo<UserDTO> getUserList(int pageNo, int pageSize);
+
+	UserDTO getUserInfoById(Long userId);
 }
