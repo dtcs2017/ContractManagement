@@ -17,11 +17,11 @@
     <result column="party_a" property="partyA" jdbcType="VARCHAR" />
     <result column="party_a_seri" property="partyASeri" jdbcType="VARCHAR" />
     <result column="party_a_principal" property="partyAPrincipal" jdbcType="VARCHAR" />
-    <result column="party_a_contact" property="partyAContact" jdbcType="DECIMAL" />
+    <result column="party_a_contact" property="partyAContact" jdbcType="VARCHAR" />
     <result column="party_b" property="partyB" jdbcType="VARCHAR" />
     <result column="party_b_seri" property="partyBSeri" jdbcType="VARCHAR" />
     <result column="party_b_principal" property="partyBPrincipal" jdbcType="VARCHAR" />
-    <result column="partya_b_contact" property="partyaBContact" jdbcType="DECIMAL" />
+    <result column="partya_b_contact" property="partyaBContact" jdbcType="VARCHAR" />
     <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
     <result column="measure_unit" property="measureUnit" jdbcType="VARCHAR" />
     <result column="unit_price" property="unitPrice" jdbcType="INTEGER" />
@@ -142,8 +142,8 @@
       #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, #{purchaseChecker,jdbcType=VARCHAR}, 
       #{financeChecker,jdbcType=VARCHAR}, #{lawChecker,jdbcType=VARCHAR}, #{ceoChecker,jdbcType=VARCHAR}, 
       #{partyA,jdbcType=VARCHAR}, #{partyASeri,jdbcType=VARCHAR}, #{partyAPrincipal,jdbcType=VARCHAR}, 
-      #{partyAContact,jdbcType=DECIMAL}, #{partyB,jdbcType=VARCHAR}, #{partyBSeri,jdbcType=VARCHAR}, 
-      #{partyBPrincipal,jdbcType=VARCHAR}, #{partyaBContact,jdbcType=DECIMAL}, #{goodsName,jdbcType=VARCHAR}, 
+      #{partyAContact,jdbcType=VARCHAR}, #{partyB,jdbcType=VARCHAR}, #{partyBSeri,jdbcType=VARCHAR}, 
+      #{partyBPrincipal,jdbcType=VARCHAR}, #{partyaBContact,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, 
       #{measureUnit,jdbcType=VARCHAR}, #{unitPrice,jdbcType=INTEGER}, #{payMethod,jdbcType=CHAR}, 
       #{goodsCount,jdbcType=INTEGER}, #{contractAmount,jdbcType=INTEGER}, #{contractState,jdbcType=CHAR}, 
       #{realPrice,jdbcType=INTEGER})
@@ -283,7 +283,7 @@
         #{partyAPrincipal,jdbcType=VARCHAR},
       </if>
       <if test="partyAContact != null" >
-        #{partyAContact,jdbcType=DECIMAL},
+        #{partyAContact,jdbcType=VARCHAR},
       </if>
       <if test="partyB != null" >
         #{partyB,jdbcType=VARCHAR},
@@ -295,7 +295,7 @@
         #{partyBPrincipal,jdbcType=VARCHAR},
       </if>
       <if test="partyaBContact != null" >
-        #{partyaBContact,jdbcType=DECIMAL},
+        #{partyaBContact,jdbcType=VARCHAR},
       </if>
       <if test="goodsName != null" >
         #{goodsName,jdbcType=VARCHAR},
@@ -378,7 +378,7 @@
         party_a_principal = #{record.partyAPrincipal,jdbcType=VARCHAR},
       </if>
       <if test="record.partyAContact != null" >
-        party_a_contact = #{record.partyAContact,jdbcType=DECIMAL},
+        party_a_contact = #{record.partyAContact,jdbcType=VARCHAR},
       </if>
       <if test="record.partyB != null" >
         party_b = #{record.partyB,jdbcType=VARCHAR},
@@ -390,7 +390,7 @@
         party_b_principal = #{record.partyBPrincipal,jdbcType=VARCHAR},
       </if>
       <if test="record.partyaBContact != null" >
-        partya_b_contact = #{record.partyaBContact,jdbcType=DECIMAL},
+        partya_b_contact = #{record.partyaBContact,jdbcType=VARCHAR},
       </if>
       <if test="record.goodsName != null" >
         goods_name = #{record.goodsName,jdbcType=VARCHAR},
@@ -438,11 +438,11 @@
       party_a = #{record.partyA,jdbcType=VARCHAR},
       party_a_seri = #{record.partyASeri,jdbcType=VARCHAR},
       party_a_principal = #{record.partyAPrincipal,jdbcType=VARCHAR},
-      party_a_contact = #{record.partyAContact,jdbcType=DECIMAL},
+      party_a_contact = #{record.partyAContact,jdbcType=VARCHAR},
       party_b = #{record.partyB,jdbcType=VARCHAR},
       party_b_seri = #{record.partyBSeri,jdbcType=VARCHAR},
       party_b_principal = #{record.partyBPrincipal,jdbcType=VARCHAR},
-      partya_b_contact = #{record.partyaBContact,jdbcType=DECIMAL},
+      partya_b_contact = #{record.partyaBContact,jdbcType=VARCHAR},
       goods_name = #{record.goodsName,jdbcType=VARCHAR},
       measure_unit = #{record.measureUnit,jdbcType=VARCHAR},
       unit_price = #{record.unitPrice,jdbcType=INTEGER},
@@ -501,7 +501,7 @@
         party_a_principal = #{partyAPrincipal,jdbcType=VARCHAR},
       </if>
       <if test="partyAContact != null" >
-        party_a_contact = #{partyAContact,jdbcType=DECIMAL},
+        party_a_contact = #{partyAContact,jdbcType=VARCHAR},
       </if>
       <if test="partyB != null" >
         party_b = #{partyB,jdbcType=VARCHAR},
@@ -513,7 +513,7 @@
         party_b_principal = #{partyBPrincipal,jdbcType=VARCHAR},
       </if>
       <if test="partyaBContact != null" >
-        partya_b_contact = #{partyaBContact,jdbcType=DECIMAL},
+        partya_b_contact = #{partyaBContact,jdbcType=VARCHAR},
       </if>
       <if test="goodsName != null" >
         goods_name = #{goodsName,jdbcType=VARCHAR},
@@ -558,11 +558,11 @@
       party_a = #{partyA,jdbcType=VARCHAR},
       party_a_seri = #{partyASeri,jdbcType=VARCHAR},
       party_a_principal = #{partyAPrincipal,jdbcType=VARCHAR},
-      party_a_contact = #{partyAContact,jdbcType=DECIMAL},
+      party_a_contact = #{partyAContact,jdbcType=VARCHAR},
       party_b = #{partyB,jdbcType=VARCHAR},
       party_b_seri = #{partyBSeri,jdbcType=VARCHAR},
       party_b_principal = #{partyBPrincipal,jdbcType=VARCHAR},
-      partya_b_contact = #{partyaBContact,jdbcType=DECIMAL},
+      partya_b_contact = #{partyaBContact,jdbcType=VARCHAR},
       goods_name = #{goodsName,jdbcType=VARCHAR},
       measure_unit = #{measureUnit,jdbcType=VARCHAR},
       unit_price = #{unitPrice,jdbcType=INTEGER},

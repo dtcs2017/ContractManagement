@@ -16,4 +16,6 @@ public interface UserService {
 	PageInfo<UserDTO> getUserList(int pageNo, int pageSize);
 
 	UserDTO getUserInfoById(Long userId);
+
+	int updateByRecord(User user);
 }

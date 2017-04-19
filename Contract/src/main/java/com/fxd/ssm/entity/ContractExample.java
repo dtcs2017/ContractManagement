@@ -1134,52 +1134,62 @@ public class ContractExample {
             return (Criteria) this;
         }
 
-        public Criteria andPartyAContactEqualTo(Long value) {
+        public Criteria andPartyAContactEqualTo(String value) {
             addCriterion("party_a_contact =", value, "partyAContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyAContactNotEqualTo(Long value) {
+        public Criteria andPartyAContactNotEqualTo(String value) {
             addCriterion("party_a_contact <>", value, "partyAContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyAContactGreaterThan(Long value) {
+        public Criteria andPartyAContactGreaterThan(String value) {
             addCriterion("party_a_contact >", value, "partyAContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyAContactGreaterThanOrEqualTo(Long value) {
+        public Criteria andPartyAContactGreaterThanOrEqualTo(String value) {
             addCriterion("party_a_contact >=", value, "partyAContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyAContactLessThan(Long value) {
+        public Criteria andPartyAContactLessThan(String value) {
             addCriterion("party_a_contact <", value, "partyAContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyAContactLessThanOrEqualTo(Long value) {
+        public Criteria andPartyAContactLessThanOrEqualTo(String value) {
             addCriterion("party_a_contact <=", value, "partyAContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyAContactIn(List<Long> values) {
+        public Criteria andPartyAContactLike(String value) {
+            addCriterion("party_a_contact like", value, "partyAContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andPartyAContactNotLike(String value) {
+            addCriterion("party_a_contact not like", value, "partyAContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andPartyAContactIn(List<String> values) {
             addCriterion("party_a_contact in", values, "partyAContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyAContactNotIn(List<Long> values) {
+        public Criteria andPartyAContactNotIn(List<String> values) {
             addCriterion("party_a_contact not in", values, "partyAContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyAContactBetween(Long value1, Long value2) {
+        public Criteria andPartyAContactBetween(String value1, String value2) {
             addCriterion("party_a_contact between", value1, value2, "partyAContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyAContactNotBetween(Long value1, Long value2) {
+        public Criteria andPartyAContactNotBetween(String value1, String value2) {
             addCriterion("party_a_contact not between", value1, value2, "partyAContact");
             return (Criteria) this;
         }
@@ -1404,52 +1414,62 @@ public class ContractExample {
             return (Criteria) this;
         }
 
-        public Criteria andPartyaBContactEqualTo(Long value) {
+        public Criteria andPartyaBContactEqualTo(String value) {
             addCriterion("partya_b_contact =", value, "partyaBContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyaBContactNotEqualTo(Long value) {
+        public Criteria andPartyaBContactNotEqualTo(String value) {
             addCriterion("partya_b_contact <>", value, "partyaBContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyaBContactGreaterThan(Long value) {
+        public Criteria andPartyaBContactGreaterThan(String value) {
             addCriterion("partya_b_contact >", value, "partyaBContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyaBContactGreaterThanOrEqualTo(Long value) {
+        public Criteria andPartyaBContactGreaterThanOrEqualTo(String value) {
             addCriterion("partya_b_contact >=", value, "partyaBContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyaBContactLessThan(Long value) {
+        public Criteria andPartyaBContactLessThan(String value) {
             addCriterion("partya_b_contact <", value, "partyaBContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyaBContactLessThanOrEqualTo(Long value) {
+        public Criteria andPartyaBContactLessThanOrEqualTo(String value) {
             addCriterion("partya_b_contact <=", value, "partyaBContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyaBContactIn(List<Long> values) {
+        public Criteria andPartyaBContactLike(String value) {
+            addCriterion("partya_b_contact like", value, "partyaBContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andPartyaBContactNotLike(String value) {
+            addCriterion("partya_b_contact not like", value, "partyaBContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andPartyaBContactIn(List<String> values) {
             addCriterion("partya_b_contact in", values, "partyaBContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyaBContactNotIn(List<Long> values) {
+        public Criteria andPartyaBContactNotIn(List<String> values) {
             addCriterion("partya_b_contact not in", values, "partyaBContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyaBContactBetween(Long value1, Long value2) {
+        public Criteria andPartyaBContactBetween(String value1, String value2) {
             addCriterion("partya_b_contact between", value1, value2, "partyaBContact");
             return (Criteria) this;
         }
 
-        public Criteria andPartyaBContactNotBetween(Long value1, Long value2) {
+        public Criteria andPartyaBContactNotBetween(String value1, String value2) {
             addCriterion("partya_b_contact not between", value1, value2, "partyaBContact");
             return (Criteria) this;
         }

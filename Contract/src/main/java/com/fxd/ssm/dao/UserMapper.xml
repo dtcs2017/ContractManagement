@@ -7,7 +7,9 @@
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="real_name" property="realName" jdbcType="VARCHAR" />
-    <result column="phone_number" property="phoneNumber" jdbcType="DECIMAL" />
+    <result column="gender" property="gender" jdbcType="INTEGER" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="DATE" />
     <result column="modify_time" property="modifyTime" jdbcType="DATE" />
@@ -72,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    user_id, role_id, user_name, password, real_name, phone_number, email, create_time, 
-    modify_time, user_state
+    user_id, role_id, user_name, password, real_name, gender, company, phone_number, 
+    email, create_time, modify_time, user_state
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fxd.ssm.entity.UserExample" >
     select
@@ -107,13 +109,15 @@
   </delete>
   <insert id="insert" parameterType="com.fxd.ssm.entity.User" >
     insert into t_user (user_id, role_id, user_name, 
-      password, real_name, phone_number, 
-      email, create_time, modify_time, 
-      user_state)
+      password, real_name, gender, 
+      company, phone_number, email, 
+      create_time, modify_time, user_state
+      )
     values (#{userId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=DECIMAL}, 
-      #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, #{modifyTime,jdbcType=DATE}, 
-      #{userState,jdbcType=CHAR})
+      #{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, 
+      #{company,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE}, #{modifyTime,jdbcType=DATE}, #{userState,jdbcType=CHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.fxd.ssm.entity.User" >
     insert into t_user
@@ -132,6 +136,12 @@
       </if>
       <if test="realName != null" >
         real_name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="company != null" >
+        company,
       </if>
       <if test="phoneNumber != null" >
         phone_number,
@@ -165,8 +175,14 @@
       <if test="realName != null" >
         #{realName,jdbcType=VARCHAR},
       </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
       <if test="phoneNumber != null" >
-        #{phoneNumber,jdbcType=DECIMAL},
+        #{phoneNumber,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
@@ -206,8 +222,14 @@
       <if test="record.realName != null" >
         real_name = #{record.realName,jdbcType=VARCHAR},
       </if>
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=INTEGER},
+      </if>
+      <if test="record.company != null" >
+        company = #{record.company,jdbcType=VARCHAR},
+      </if>
       <if test="record.phoneNumber != null" >
-        phone_number = #{record.phoneNumber,jdbcType=DECIMAL},
+        phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
       </if>
       <if test="record.email != null" >
         email = #{record.email,jdbcType=VARCHAR},
@@ -233,7 +255,9 @@
       user_name = #{record.userName,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       real_name = #{record.realName,jdbcType=VARCHAR},
-      phone_number = #{record.phoneNumber,jdbcType=DECIMAL},
+      gender = #{record.gender,jdbcType=INTEGER},
+      company = #{record.company,jdbcType=VARCHAR},
+      phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=DATE},
       modify_time = #{record.modifyTime,jdbcType=DATE},
@@ -257,8 +281,14 @@
       <if test="realName != null" >
         real_name = #{realName,jdbcType=VARCHAR},
       </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
       <if test="phoneNumber != null" >
-        phone_number = #{phoneNumber,jdbcType=DECIMAL},
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
@@ -281,7 +311,9 @@
       user_name = #{userName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       real_name = #{realName,jdbcType=VARCHAR},
-      phone_number = #{phoneNumber,jdbcType=DECIMAL},
+      gender = #{gender,jdbcType=INTEGER},
+      company = #{company,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=DATE},
       modify_time = #{modifyTime,jdbcType=DATE},

@@ -623,52 +623,62 @@ public class CustomerExample {
             return (Criteria) this;
         }
 
-        public Criteria andMobileNumEqualTo(Long value) {
+        public Criteria andMobileNumEqualTo(String value) {
             addCriterion("mobile_num =", value, "mobileNum");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNumNotEqualTo(Long value) {
+        public Criteria andMobileNumNotEqualTo(String value) {
             addCriterion("mobile_num <>", value, "mobileNum");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNumGreaterThan(Long value) {
+        public Criteria andMobileNumGreaterThan(String value) {
             addCriterion("mobile_num >", value, "mobileNum");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNumGreaterThanOrEqualTo(Long value) {
+        public Criteria andMobileNumGreaterThanOrEqualTo(String value) {
             addCriterion("mobile_num >=", value, "mobileNum");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNumLessThan(Long value) {
+        public Criteria andMobileNumLessThan(String value) {
             addCriterion("mobile_num <", value, "mobileNum");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNumLessThanOrEqualTo(Long value) {
+        public Criteria andMobileNumLessThanOrEqualTo(String value) {
             addCriterion("mobile_num <=", value, "mobileNum");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNumIn(List<Long> values) {
+        public Criteria andMobileNumLike(String value) {
+            addCriterion("mobile_num like", value, "mobileNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMobileNumNotLike(String value) {
+            addCriterion("mobile_num not like", value, "mobileNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMobileNumIn(List<String> values) {
             addCriterion("mobile_num in", values, "mobileNum");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNumNotIn(List<Long> values) {
+        public Criteria andMobileNumNotIn(List<String> values) {
             addCriterion("mobile_num not in", values, "mobileNum");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNumBetween(Long value1, Long value2) {
+        public Criteria andMobileNumBetween(String value1, String value2) {
             addCriterion("mobile_num between", value1, value2, "mobileNum");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNumNotBetween(Long value1, Long value2) {
+        public Criteria andMobileNumNotBetween(String value1, String value2) {
             addCriterion("mobile_num not between", value1, value2, "mobileNum");
             return (Criteria) this;
         }

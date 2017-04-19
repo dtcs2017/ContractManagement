@@ -13,7 +13,11 @@ public class User {
 
     private String realName;
 
-    private Long phoneNumber;
+    private Integer gender;
+
+    private String company;
+
+    private String phoneNumber;
 
     private String email;
 
@@ -63,12 +67,28 @@ public class User {
         this.realName = realName == null ? null : realName.trim();
     }
 
-    public Long getPhoneNumber() {
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company == null ? null : company.trim();
+    }
+
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Long phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber == null ? null : phoneNumber.trim();
     }
 
     public String getEmail() {
@@ -83,8 +103,8 @@ public class User {
         return createTime;
     }
 
-    public void setCreateTime(Date creatTime) {
-        this.createTime = creatTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Date getModifyTime() {

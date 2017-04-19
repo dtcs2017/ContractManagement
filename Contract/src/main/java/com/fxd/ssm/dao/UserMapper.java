@@ -32,8 +32,6 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
 	User selectByName(String username);
-	
-	Long selectRoleIdByName(String username);
 
 	Set<String> selectRolesByUserName(String userName);
 
@@ -42,4 +40,6 @@ public interface UserMapper {
 	List<UserDTO> getUserList();
 
 	UserDTO getUserInfoById(Long userId);
+
+	int updateByRecored(User user);
 }

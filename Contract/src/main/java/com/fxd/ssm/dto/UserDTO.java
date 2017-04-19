@@ -13,7 +13,7 @@ public class UserDTO {
 
     private String realName;
 
-    private Long phoneNumber;
+    private String phoneNumber;
 
     private String email;
 
@@ -23,7 +23,27 @@ public class UserDTO {
 
     private String userState;
     
-    public String getRoleName() {
+    private Integer gender;
+    
+    private String company;
+    
+    public Integer getGender() {
+		return gender;
+	}
+
+	public void setGender(Integer gender) {
+		this.gender = gender;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public String getRoleName() {
 		return roleName;
 	}
 
@@ -73,11 +93,11 @@ public class UserDTO {
         this.realName = realName == null ? null : realName.trim();
     }
 
-    public Long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

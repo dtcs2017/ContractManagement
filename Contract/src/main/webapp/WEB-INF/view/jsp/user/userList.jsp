@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> 系统管理 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="user/userList">用户列表</a></li>
+                      <li><a href="user/getUserList">用户列表</a></li>
                       <li><a href="role/roleList">角色列表</a></li>
                       <li><a href="authority/authorityList">权限列表</a></li>
                     </ul>
@@ -328,13 +328,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                      </div>
 	                    </th>
 	                    <th class="column-title">用户名 </th>
-	                    <th class="column-title">真实姓名 </th>
+	                    <th class="column-title">公司名称 </th>
 	                    <th class="column-title">用户角色 </th>
 	                    <th class="column-title">联系电话 </th>
-	                    <th class="column-title">邮箱 </th>
-	                    <th class="column-title">创建时间 </th>
-	                    <th class="column-title">修改时间 </th>
-	                    <th class="column-title no-link last"><span class="nobr">Action</span>
+	                    <th class="column-title no-link last"><span class="nobr">操作</span>
 	                    </th>
 	                    <th class="bulk-actions" colspan="7">
 	                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
@@ -361,16 +358,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                     		      </div>
 	                     		    </th>
 				                    <td>${user.userName }</td>
-				                    <td>${user.realName }</td>
+				                    <td>${user.company }</td>
 				                    <td>${user.roleName }</td>
 		                            <td>${user.phoneNumber }</td>
-		                            <td>${user.email }</td>
-		                            <td>
-		                              <fmt:formatDate  value="${user.createTime}" type="Date" pattern="yyyy.MM.dd HH:mm:ss" />
-		                            </td>
-		                            <td>
-		                           	  <fmt:formatDate  value="${user.modifyTime}" type="Date" pattern="yyyy.MM.dd HH:mm:ss" />
-		                            </td>
 				                    <td class=" last">
 				                      <div class="btn-group">
 				                        <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
@@ -378,7 +368,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                                  <i class="fa fa-eye"></i>
 		                                </a>
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Edit" href="user/viewUser?userId=${user.userId }">
+		                                	data-original-title="Edit" href="user/toUpdateUser?userId=${user.userId }">
 		                                  <i class="fa fa-pencil"></i>
 		                                </a>
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
@@ -398,16 +388,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                     		      </div>
 	                     		    </th>
 		                            <td>${user.userName }</td>
-		                            <td>${user.realName }</td>
+				                    <td>${user.company }</td>
 		                            <td>${user.roleName }</td>
 		                            <td>${user.phoneNumber }</td>
-		                            <td>${user.email }</td>
-		                            <td>
-		                              <fmt:formatDate  value="${user.createTime}" type="Date" pattern="yyyy.MM.dd HH:mm:ss" />
-		                            </td>
-		                            <td>
-		                           	  <fmt:formatDate  value="${user.modifyTime}" type="Date" pattern="yyyy.MM.dd HH:mm:ss" />
-		                            </td>
 		                            <td class=" last">
 		                              <div class="btn-group">
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
@@ -415,7 +398,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                                  <i class="fa fa-eye"></i>
 		                                </a>
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Edit" href="user/viewUser?userId=${user.userId }">
+		                                	data-original-title="Edit" href="user/toUpdateUser?userId=${user.userId }">
 		                                  <i class="fa fa-pencil"></i>
 		                                </a>
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
@@ -479,6 +462,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		
     	  </div>
     	</div>
+    	</div>
        	<!-- /page content -->
        	
        	<!-- footer content -->
@@ -499,36 +483,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="resources/plugins/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="resources/plugins/nprogress/nprogress.js"></script>
-    <!-- Chart.js -->
-    <script src="resources/plugins/Chart.js/dist/Chart.min.js"></script>
-    <!-- gauge.js -->
-    <script src="resources/plugins/gauge.js/dist/gauge.min.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="resources/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
     <script src="resources/plugins/iCheck/icheck.min.js"></script>
-    <!-- Skycons -->
-    <script src="resources/plugins/skycons/skycons.js"></script>
-    <!-- Flot -->
-    <script src="resources/plugins/Flot/jquery.flot.js"></script>
-    <script src="resources/plugins/Flot/jquery.flot.pie.js"></script>
-    <script src="resources/plugins/Flot/jquery.flot.time.js"></script>
-    <script src="resources/plugins/Flot/jquery.flot.stack.js"></script>
-    <script src="resources/plugins/Flot/jquery.flot.resize.js"></script>
-    <!-- Flot plugins -->
-    <script src="resources/plugins/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="resources/plugins/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="resources/plugins/flot.curvedlines/curvedLines.js"></script>
-    <!-- DateJS -->
-    <script src="resources/plugins/DateJS/build/date.js"></script>
-    <!-- JQVMap -->
-    <script src="resources/plugins/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="resources/plugins/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="resources/plugins/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="resources/plugins/moment/min/moment.min.js"></script>
-    <script src="resources/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-
+    <!-- Datatables -->
+    <!-- <script src="resources/plugins/datatables.net/js/jquery.dataTables.min.js"></script> -->
+    <script src="resources/plugins/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="resources/plugins/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="resources/plugins/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="resources/plugins/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="resources/plugins/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="resources/plugins/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="resources/plugins/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="resources/plugins/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="resources/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="resources/plugins/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <!-- <script src="resources/plugins/datatables.net-scroller/js/dataTables.scroller.min.js"></script> -->
+    <script src="resources/plugins/jszip/dist/jszip.min.js"></script>
+    <script src="resources/plugins/pdfmake/build/pdfmake.min.js"></script>
+    <script src="resources/plugins/pdfmake/build/vfs_fonts.js"></script>
+    
     <!-- Custom Theme Scripts -->
     <script src="resources/plugins/custom/js/custom.min.js"></script>
   </body>

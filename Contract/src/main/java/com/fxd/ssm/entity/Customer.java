@@ -18,7 +18,7 @@ public class Customer {
 
     private String phoneNum;
 
-    private Long mobileNum;
+    private String mobileNum;
 
     private String bankName;
 
@@ -82,12 +82,12 @@ public class Customer {
         this.phoneNum = phoneNum == null ? null : phoneNum.trim();
     }
 
-    public Long getMobileNum() {
+    public String getMobileNum() {
         return mobileNum;
     }
 
-    public void setMobileNum(Long mobileNum) {
-        this.mobileNum = mobileNum;
+    public void setMobileNum(String mobileNum) {
+        this.mobileNum = mobileNum == null ? null : mobileNum.trim();
     }
 
     public String getBankName() {

@@ -40,4 +40,8 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 		return userInfo;
 	}
 
+	public int updateByRecord(User user) {
+		return userMapper.updateByRecored(user);
+	}
+
 }

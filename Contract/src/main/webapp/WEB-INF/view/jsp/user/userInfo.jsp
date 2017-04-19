@@ -229,7 +229,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!-- /top navigation -->
 	        
         <!-- page content -->
-        <div class="right_col">
+        <div class="right_col" role="main">
     	  <div class="">
     	    <div class="clearfix"></div>
     		<div class="row">
@@ -249,6 +249,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		            <tr>
     		              <td style="text-align:right">真实姓名</td>
     		              <td style="text-align:left">${userInfo.realName }</td>
+    		            <tr>
+    		              <td style="text-align:right">性别</td>
+    		              <td style="text-align:left">${userInfo.gender }</td>
+    		            </tr>
     		            </tr>
     		            <tr>
     		              <td style="text-align:right">用户角色</td>
@@ -256,7 +260,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		            </tr>
     		            <tr>
     		              <td style="text-align:right">所属公司</td>
-    		              <td style="text-align:left">################</td>
+    		              <td style="text-align:left">${userInfo.company }</td>
     		            </tr>
     		            <tr>
     		              <td style="text-align:right">联系电话</td>
@@ -267,24 +271,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		              <td style="text-align:left">${userInfo.email }</td>
     		            </tr>
     		            <tr>
-    		              <td style="text-align:right">所属公司</td>
-    		              <td style="text-align:left">################</td>
+    		              <td style="text-align:right">创建时间 </td>
+    		              <td style="text-align:left">
+    		                <fmt:formatDate  value="${userInfo.createTime}" type="Date" pattern="yyyy-MM-dd HH:mm:ss" />
+    		              </td>
     		            </tr>
     		            <tr>
-    		              <td style="text-align:right">所属公司</td>
-    		              <td style="text-align:left">################</td>
+    		              <td style="text-align:right">修改时间 </td>
+    		              <td style="text-align:left">
+    		                <fmt:formatDate  value="${userInfo.modifyTime}" type="Date" pattern="yyyy-MM-dd HH:mm:ss" />
+    		              </td>
     		            </tr>
     		            <tr>
-    		              <td style="text-align:right">所属公司</td>
-    		              <td style="text-align:left">################</td>
-    		            </tr>
-    		            <tr>
-    		              <td style="text-align:right">所属公司</td>
-    		              <td style="text-align:left">################</td>
-    		            </tr>
-    		            <tr>
-    		              <td style="text-align:right">所属公司</td>
-    		              <td style="text-align:left">################</td>
+    		              <td style="text-align:right">用户状态</td>
+    		              <td style="text-align:left">${userInfo.userState }</td>
     		            </tr>
     		          </tbody>
     		          
@@ -307,43 +307,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
     </div>
     <!-- jQuery -->
-    <script src="resources/plugins/jquery/dist/jquery.js"></script>
+    <script src="resources/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="resources/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
     <script src="resources/plugins/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="resources/plugins/nprogress/nprogress.js"></script>
-    <!-- Chart.js -->
-    <script src="resources/plugins/Chart.js/dist/Chart.min.js"></script>
-    <!-- gauge.js -->
-    <script src="resources/plugins/gauge.js/dist/gauge.min.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="resources/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    <script src="resources/plugins/iCheck/icheck.min.js"></script>
-    <!-- Skycons -->
-    <script src="resources/plugins/skycons/skycons.js"></script>
-    <!-- Flot -->
-    <script src="resources/plugins/Flot/jquery.flot.js"></script>
-    <script src="resources/plugins/Flot/jquery.flot.pie.js"></script>
-    <script src="resources/plugins/Flot/jquery.flot.time.js"></script>
-    <script src="resources/plugins/Flot/jquery.flot.stack.js"></script>
-    <script src="resources/plugins/Flot/jquery.flot.resize.js"></script>
-    <!-- Flot plugins -->
-    <script src="resources/plugins/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="resources/plugins/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="resources/plugins/flot.curvedlines/curvedLines.js"></script>
-    <!-- DateJS -->
-    <script src="resources/plugins/DateJS/build/date.js"></script>
-    <!-- JQVMap -->
-    <script src="resources/plugins/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="resources/plugins/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="resources/plugins/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="resources/plugins/moment/min/moment.min.js"></script>
-    <script src="resources/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-
+    
     <!-- Custom Theme Scripts -->
     <script src="resources/plugins/custom/js/custom.min.js"></script>
   </body>

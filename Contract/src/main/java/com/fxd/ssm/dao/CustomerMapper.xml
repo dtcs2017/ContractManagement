@@ -9,7 +9,7 @@
     <result column="legal_repre" property="legalRepre" jdbcType="VARCHAR" />
     <result column="agent" property="agent" jdbcType="VARCHAR" />
     <result column="phone_num" property="phoneNum" jdbcType="VARCHAR" />
-    <result column="mobile_num" property="mobileNum" jdbcType="DECIMAL" />
+    <result column="mobile_num" property="mobileNum" jdbcType="VARCHAR" />
     <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
     <result column="bank_num" property="bankNum" jdbcType="DECIMAL" />
     <result column="created_time" property="createdTime" jdbcType="DATE" />
@@ -113,7 +113,7 @@
       bank_num, created_time)
     values (#{customerId,jdbcType=INTEGER}, #{customerName,jdbcType=VARCHAR}, #{customerAddress,jdbcType=VARCHAR}, 
       #{certSerialNum,jdbcType=VARCHAR}, #{legalRepre,jdbcType=VARCHAR}, #{agent,jdbcType=VARCHAR}, 
-      #{phoneNum,jdbcType=VARCHAR}, #{mobileNum,jdbcType=DECIMAL}, #{bankName,jdbcType=VARCHAR}, 
+      #{phoneNum,jdbcType=VARCHAR}, #{mobileNum,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, 
       #{bankNum,jdbcType=DECIMAL}, #{createdTime,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="com.fxd.ssm.entity.Customer" >
@@ -176,7 +176,7 @@
         #{phoneNum,jdbcType=VARCHAR},
       </if>
       <if test="mobileNum != null" >
-        #{mobileNum,jdbcType=DECIMAL},
+        #{mobileNum,jdbcType=VARCHAR},
       </if>
       <if test="bankName != null" >
         #{bankName,jdbcType=VARCHAR},
@@ -220,7 +220,7 @@
         phone_num = #{record.phoneNum,jdbcType=VARCHAR},
       </if>
       <if test="record.mobileNum != null" >
-        mobile_num = #{record.mobileNum,jdbcType=DECIMAL},
+        mobile_num = #{record.mobileNum,jdbcType=VARCHAR},
       </if>
       <if test="record.bankName != null" >
         bank_name = #{record.bankName,jdbcType=VARCHAR},
@@ -245,7 +245,7 @@
       legal_repre = #{record.legalRepre,jdbcType=VARCHAR},
       agent = #{record.agent,jdbcType=VARCHAR},
       phone_num = #{record.phoneNum,jdbcType=VARCHAR},
-      mobile_num = #{record.mobileNum,jdbcType=DECIMAL},
+      mobile_num = #{record.mobileNum,jdbcType=VARCHAR},
       bank_name = #{record.bankName,jdbcType=VARCHAR},
       bank_num = #{record.bankNum,jdbcType=DECIMAL},
       created_time = #{record.createdTime,jdbcType=DATE}
@@ -275,7 +275,7 @@
         phone_num = #{phoneNum,jdbcType=VARCHAR},
       </if>
       <if test="mobileNum != null" >
-        mobile_num = #{mobileNum,jdbcType=DECIMAL},
+        mobile_num = #{mobileNum,jdbcType=VARCHAR},
       </if>
       <if test="bankName != null" >
         bank_name = #{bankName,jdbcType=VARCHAR},
@@ -297,7 +297,7 @@
       legal_repre = #{legalRepre,jdbcType=VARCHAR},
       agent = #{agent,jdbcType=VARCHAR},
       phone_num = #{phoneNum,jdbcType=VARCHAR},
-      mobile_num = #{mobileNum,jdbcType=DECIMAL},
+      mobile_num = #{mobileNum,jdbcType=VARCHAR},
       bank_name = #{bankName,jdbcType=VARCHAR},
       bank_num = #{bankNum,jdbcType=DECIMAL},
       created_time = #{createdTime,jdbcType=DATE}

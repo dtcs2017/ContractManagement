@@ -31,7 +31,7 @@ public class Contract {
 
     private String partyAPrincipal;
 
-    private Long partyAContact;
+    private String partyAContact;
 
     private String partyB;
 
@@ -39,7 +39,7 @@ public class Contract {
 
     private String partyBPrincipal;
 
-    private Long partyaBContact;
+    private String partyaBContact;
 
     private String goodsName;
 
@@ -177,12 +177,12 @@ public class Contract {
         this.partyAPrincipal = partyAPrincipal == null ? null : partyAPrincipal.trim();
     }
 
-    public Long getPartyAContact() {
+    public String getPartyAContact() {
         return partyAContact;
     }
 
-    public void setPartyAContact(Long partyAContact) {
-        this.partyAContact = partyAContact;
+    public void setPartyAContact(String partyAContact) {
+        this.partyAContact = partyAContact == null ? null : partyAContact.trim();
     }
 
     public String getPartyB() {
@@ -209,12 +209,12 @@ public class Contract {
         this.partyBPrincipal = partyBPrincipal == null ? null : partyBPrincipal.trim();
     }
 
-    public Long getPartyaBContact() {
+    public String getPartyaBContact() {
         return partyaBContact;
     }
 
-    public void setPartyaBContact(Long partyaBContact) {
-        this.partyaBContact = partyaBContact;
+    public void setPartyaBContact(String partyaBContact) {
+        this.partyaBContact = partyaBContact == null ? null : partyaBContact.trim();
     }
 
     public String getGoodsName() {
