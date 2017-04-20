@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
@@ -60,7 +61,8 @@ public class UserController extends BaseController {
 	}
 	
 	@RequestMapping("updateUser")
-	public Integer updateUser(HttpServletRequest request,
+	@ResponseBody
+	public JsonResult updateUser(HttpServletRequest request,
 			HttpServletResponse response,User user) throws IOException{
 		
 		user.setModifyTime(new Date());
@@ -68,14 +70,12 @@ public class UserController extends BaseController {
 		JsonResult jr=new JsonResult();
 		if (result >= 1) {
 			jr.setResultCode(1);
-			jr.setErrormsg("修改资产成功！");
+			jr.setErrormsg("修改用户信息成功！");
 		} else {
 			jr.setResultCode(0);
-			jr.setErrormsg("修改资产失败！");
+			jr.setErrormsg("修改用户信息失败！");
 		}
 		String o = JSON.toJSONString(jr);
-		response.setContentType("text/html;charset=UTF-8");
-		response.getWriter().print(o);
-		return 1;
+		return jr;
 	}
 }

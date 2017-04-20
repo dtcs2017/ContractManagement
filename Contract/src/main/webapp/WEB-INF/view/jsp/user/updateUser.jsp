@@ -407,7 +407,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			data:$("#editUser").serialize(),
     			dataType:"json",
     			success:function(data){
-    				alert(data);
+    				alert(data.resultCode);
     			}
     		});
     	});
