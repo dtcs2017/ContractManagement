@@ -42,4 +42,6 @@ public interface UserMapper {
 	UserDTO getUserInfoById(Long userId);
 
 	int updateByRecored(User user);
+
+	int deleteUserById(Long userId);
 }

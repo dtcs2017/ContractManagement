@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.fxd.ssm.entity.Role" >
     <id column="role_id" property="roleId" jdbcType="BIGINT" />
     <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_description" property="roleDescription" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.fxd.ssm.entity.Role" extends="BaseResultMap" >
     <result column="role_description" property="roleDescription" jdbcType="LONGVARCHAR" />

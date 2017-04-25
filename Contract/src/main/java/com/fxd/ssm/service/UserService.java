@@ -1,5 +1,6 @@
 package com.fxd.ssm.service;
 
+import java.util.Date;
 import java.util.Set;
 
 import com.fxd.ssm.dto.UserDTO;
@@ -18,4 +19,6 @@ public interface UserService {
 	UserDTO getUserInfoById(Long userId);
 
 	int updateByRecord(User user);
+
+	int deleteUserById(Long userId);
 }

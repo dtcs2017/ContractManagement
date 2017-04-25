@@ -407,7 +407,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			data:$("#editUser").serialize(),
     			dataType:"json",
     			success:function(data){
-    				alert(data.resultCode);
+    				if(data.resultCode==1){
+    					alert("修改成功");
+    					window.location.href="user/getUserList";
+    				}
     			}
     		});
     	});

@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="contract" value="${pageContext.request.contextPath}"/>
+<c:set var="ice" value="${pageContext.request.contextPath}"/>
 <style>
 <!--
 .mysss {
@@ -16,18 +12,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 -->
 </style>
 <script type="text/javascript">  
- var $queryform = $("#queryform");
+ //var $queryform = $("#queryform");
  function pageClick(pNo){
 	  var psize = $("#pageSize").val();
 	  $("#queryform").append('<input type="hidden" name="pageNo" value="' + pNo + '" />');
 	  $("#queryform").append('<input type="hidden" name="pageSize" value="' + psize + '" />');
-      $queryform.submit();
+	  $("#queryform").submit();
  }
   
  function pageSizeClick(){
 	 var psize = $("#pageSize").val();
 	 $("#queryform").append('<input type="hidden" name="pageSize" value="' + psize + '" />');
-     $queryform.submit();
+	 $("#queryform").submit();
  }
   
   function toGo(){
@@ -75,26 +71,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<span class="pull-left">共 ${page.total } 条数据</span>
 	<ul class="pagination pagination-sm no-margin pull-right pages-ul">
 		<c:if test="${page.isFirstPage}">
-			<li style="color:#bbb;">首页</li>
+			<li class="paginate_button" style="color:#bbb;">首页</li>
 	    </c:if>
 	    <c:if test="${!page.isFirstPage}">
-	    	<li onclick="pageClick(1)">首页</li>
+	    	<li class="paginate_button" onclick="pageClick(1)">首页</li>
 	    </c:if>
 		
 		 <c:forEach items="${page.navigatepageNums}" var="nav">
             <c:if test="${nav == page.pageNum}">
-                <li class="mysss">${ nav}</li>
+                <li class="paginate_button" class="mysss">${ nav}</li>
             </c:if>
             <c:if test="${nav != page.pageNum}">
-            	<li onclick="pageClick(${nav})">${nav}</li>
+            	<li class="paginate_button" onclick="pageClick(${nav})">${nav}</li>
             </c:if>
         </c:forEach>
 		
 		<c:if test="${page.isLastPage}">
-			<li style="color:#bbb;">尾页</li>
+			<li class="paginate_button" style="color:#bbb;">尾页</li>
 	    </c:if>
 	    <c:if test="${!page.isLastPage}">
-	    	<li onclick="pageClick(${page.pages})">尾页</li>
+	    	<li class="paginate_button" onclick="pageClick(${page.pages})">尾页</li>
 	    </c:if>
 	    
 		<li style="font-size: 12px; margin-left: 10px;font-weight: bold;border:0; ">共${page.pages }页</li>

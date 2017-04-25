@@ -26,8 +26,6 @@ import com.fxd.ssm.entity.User;
 @Controller
 @RequestMapping("/user")
 public class UserController extends BaseController {
-	
-	
 
 	@RequestMapping("/toAddUser")
 	public ModelAndView createUser(){
@@ -41,6 +39,7 @@ public class UserController extends BaseController {
 		PageInfo<UserDTO> page=userService.getUserList(pageNo,pageSize);
 		List<UserDTO> uList=page.getList();
 		model.addAttribute("uList", uList);
+		model.addAttribute("page", page);
 		return "user/userList";
 	}
 	
@@ -74,6 +73,23 @@ public class UserController extends BaseController {
 		} else {
 			jr.setResultCode(0);
 			jr.setErrormsg("修改用户信息失败！");
+		}
+		String o = JSON.toJSONString(jr);
+		return jr;
+	}
+	
+	@RequestMapping("deleteUser")
+	@ResponseBody
+	public JsonResult deleteUser(HttpServletRequest request,
+			HttpServletResponse response,@RequestParam("userId") Long userId) throws IOException{
+		int result=userService.deleteUserById(userId);
+		JsonResult jr=new JsonResult();
+		if (result >= 1) {
+			jr.setResultCode(1);
+			jr.setErrormsg("删除成功！");
+		} else {
+			jr.setResultCode(0);
+			jr.setErrormsg("删除失败！");
 		}
 		String o = JSON.toJSONString(jr);
 		return jr;

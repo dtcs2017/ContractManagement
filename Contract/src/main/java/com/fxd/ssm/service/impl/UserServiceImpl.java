@@ -44,4 +44,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 		return userMapper.updateByRecored(user);
 	}
 
+	public int deleteUserById(Long userId) {
+		
+		return userMapper.deleteUserById(userId);
+	}
+
 }

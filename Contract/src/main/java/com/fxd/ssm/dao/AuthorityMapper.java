@@ -33,4 +33,6 @@ public interface AuthorityMapper {
     int updateByPrimaryKeyWithBLOBs(Authority record);
 
     int updateByPrimaryKey(Authority record);
+
+	List<Authority> getAuthorityList();
 }

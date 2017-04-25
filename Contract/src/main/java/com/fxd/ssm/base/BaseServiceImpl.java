@@ -3,6 +3,7 @@ package com.fxd.ssm.base;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fxd.ssm.dao.AuthorityMapper;
 import com.fxd.ssm.dao.RoleMapper;
 import com.fxd.ssm.dao.UserMapper;
 
@@ -12,4 +13,6 @@ public class BaseServiceImpl implements BaseService {
 	protected UserMapper userMapper;
 	@Autowired
 	protected RoleMapper roleMapper;
+	@Autowired
+	protected AuthorityMapper authorityMapper;
 }
