@@ -44,4 +44,10 @@ public interface UserMapper {
 	int updateByRecored(User user);
 
 	int deleteUserById(Long userId);
+
+	UserDTO getUserInfoByName(String userName);
+
+	String selectPwdByName(String userName);
+
+	int updatePwdByName(String currUser, String newPwd);
 }

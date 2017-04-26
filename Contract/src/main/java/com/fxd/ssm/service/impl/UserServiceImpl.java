@@ -49,4 +49,23 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 		return userMapper.deleteUserById(userId);
 	}
 
+	public int addUser(User user) {
+		
+		return userMapper.insertSelective(user);
+	}
+
+	public UserDTO getUserInfoByName(String userName) {
+		return userMapper.getUserInfoByName(userName);
+	}
+
+	public String getPwdByName(String userName) {
+		
+		return userMapper.selectPwdByName(userName);
+	}
+
+	public int updatePwdByName(String currUser, String newPwd) {
+		
+		return userMapper.updatePwdByName(currUser,newPwd);
+	}
+
 }

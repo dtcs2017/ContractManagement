@@ -21,4 +21,12 @@ public interface UserService {
 	int updateByRecord(User user);
 
 	int deleteUserById(Long userId);
+
+	int addUser(User user);
+
+	UserDTO getUserInfoByName(String userName);
+
+	String getPwdByName(String userName);
+
+	int updatePwdByName(String currUser, String newPwd);
 }

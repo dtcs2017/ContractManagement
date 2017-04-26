@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="x_content">
               <div class="well" style="overflow: auto">
-                <form id="queryform" action="user/getUserList" class="form-horizontal" >
+                <form id="queryform" action="authority/getAuthorityList" class="form-horizontal" >
                   <div class="col-sm-3" style="margin-left:-10px" >
                     <label>用户角色</label>
                     <select class="form-control input-sm" name="roleId">
@@ -167,13 +167,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	                <tbody>
 	                  <c:choose>
-	                    <c:when test="${empty rList }">
+	                    <c:when test="${empty aList }">
 	                      <tr>
 	                       	<td colspan="10">暂无数据</td>
 	                   	  </tr>
 	                      </c:when>
 	                     	<c:otherwise>
-	                     	  <c:forEach items="${rList}" var="role" varStatus="status">
+	                     	  <c:forEach items="${aList}" var="authority" varStatus="status">
 	                     		<c:if test="${status.count%2==0 }">
 	                     		  <tr class="even pointer">
 	                     		    <td></td>
@@ -182,21 +182,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                     		        <input type="checkbox" class="flat"/>
 	                     		      </div>
 	                     		    </th>
-				                    <td>${role.roleId }</td>
-				                    <td>${role.roleName }</td>
-				                    <td>${role.roleDescription }</td>
+				                    <td>${authority.authorityId }</td>
+				                    <td>${authority.authorityName }</td>
+				                    <td>${authority.authorityDescription }</td>
 				                    <td class=" last">
 				                      <div class="btn-group">
 				                        <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="View" href="role/viewRole?roleId=${role.roleId }">
+		                                	data-original-title="View" href="role/viewAuthority?authorityId=${authority.authorityId }">
 		                                  <i class="fa fa-eye"></i>
 		                                </a>
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Edit" href="role/toUpdateRole?roleId=${role.roleId }">
+		                                	data-original-title="Edit" href="role/toUpdateAuthority?authorityId=${authority.authorityId }">
 		                                  <i class="fa fa-pencil"></i>
 		                                </a>
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Delete" href="javascript:void(0);" onclick="deleteRole(${role.roleId })">
+		                                	data-original-title="Delete" href="javascript:void(0);" onclick="deleteAuthority(${authority.authorityId })">
 		                                  <i class="fa fa-trash"></i>
 		                                </a>
 		                              </div>
@@ -211,21 +211,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                     		        <input type="checkbox" class="flat"/>
 	                     		      </div>
 	                     		    </th>
-		                            <td>${role.roleId }</td>
-				                    <td>${role.roleName }</td>
-				                    <td>${role.roleDescription }</td>
+		                            <td>${authority.authorityId }</td>
+				                    <td>${authority.authorityName }</td>
+				                    <td>${authority.authorityDescription }</td>
 		                            <td class=" last">
 		                              <div class="btn-group">
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="View" href="role/viewRole?roleId=${role.roleId }">
+		                                	data-original-title="View" href="role/viewAuthority?authorityId=${authority.authorityId }">
 		                                  <i class="fa fa-eye"></i>
 		                                </a>
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Edit" href="role/toUpdateRole?roleId=${role.roleId }">
+		                                	data-original-title="Edit" href="role/toUpdateAuthority?authorityId=${authority.authorityId }">
 		                                  <i class="fa fa-pencil"></i>
 		                                </a>
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Delete" href="javascript:void(0);" onclick="deleteRole(${role.roleId })">
+		                                	data-original-title="Delete" href="javascript:void(0);" onclick="deleteAuthority(${authority.authorityId })">
 		                                  <i class="fa fa-trash"></i>
 		                                </a>
 		                              </div>
@@ -284,16 +284,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="resources/plugins/custom/js/custom.min.js"></script>
     
     <script type="text/javascript">
-      function deleteRole(roleId){
+      function deleteRole(authorityId){
     	  $.ajax({
   			type:"post",
-  			url:"user/deleteUser",
-  			data:{'userId':roleId},
+  			url:"authority/deleteAuthority",
+  			data:{'authorityId':authorityId},
   			dataType:"json",
   			success:function(data){
   				if(data.resultCode==1){
   					alert("删除成功");
-  					window.location.href="role/getRoleList";
+  					window.location.href="Authority/getAuthorityList";
   				}
   			}
   		});

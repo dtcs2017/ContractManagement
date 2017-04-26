@@ -94,4 +94,19 @@
   <update id="deleteUserById" parameterType="Long">
     update t_user set user_state=0,modify_time=now() where user_id=#{userId,jdbcType=BIGINT}
   </update>
+  
+  <select id="getUserInfoByName" resultMap="BaseResultMap2">
+    select u.user_id,u.role_id,u.user_name,u.password,u.real_name,u.phone_number,
+  	u.email,u.create_time,u.modify_time,u.user_state,u.company,
+  	r.role_name from t_user u,t_role r
+  	where u.user_state=1 and u.role_id=r.role_id and u.user_name=#{userName,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectPwdByName" resultType="String">
+    select password from t_user where user_name=#{userName,jdbcType=VARCHAR}
+  </select>
+  
+  <update id="updatePwdByName">
+    update t_user set password=#{newPwd,jdbcType=VARCHAR} where user_name=#{userName,jdbcType=VARCHAR}
+  </update>
 </mapper>

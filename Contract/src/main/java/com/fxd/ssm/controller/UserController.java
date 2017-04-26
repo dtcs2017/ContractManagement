@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,8 +26,24 @@ import com.fxd.ssm.entity.User;
 public class UserController extends BaseController {
 
 	@RequestMapping("/toAddUser")
-	public ModelAndView createUser(){
-		return new ModelAndView("user/add_user");
+	public ModelAndView toAddUser(){
+		return new ModelAndView("user/addUser");
+	}
+	
+	@RequestMapping("addUser")
+	@ResponseBody
+	public JsonResult addUser(User user){
+		user.setCreateTime(new Date());
+		int result=userService.addUser(user);
+		JsonResult jResult=new JsonResult();
+		if(result==1){
+			jResult.setResultCode(1);
+			jResult.setErrormsg("新增用户成功");
+		}else{
+			jResult.setResultCode(0);
+			jResult.setErrormsg("新增用户失败");
+		}
+		return jResult;
 	}
 	
 	@RequestMapping("getUserList")
@@ -61,8 +75,7 @@ public class UserController extends BaseController {
 	
 	@RequestMapping("updateUser")
 	@ResponseBody
-	public JsonResult updateUser(HttpServletRequest request,
-			HttpServletResponse response,User user) throws IOException{
+	public JsonResult updateUser(User user) throws IOException{
 		
 		user.setModifyTime(new Date());
 		int result=userService.updateByRecord(user);
@@ -74,7 +87,6 @@ public class UserController extends BaseController {
 			jr.setResultCode(0);
 			jr.setErrormsg("修改用户信息失败！");
 		}
-		String o = JSON.toJSONString(jr);
 		return jr;
 	}
 	

@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>修改用户信息</title>
+    <title>新增用户</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -43,15 +43,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <!-- Custom Theme Style -->
     <link href="resources/plugins/custom/css/custom.min.css" rel="stylesheet">
-    
-    <style type="text/css">
-    .my_right_col{
-    	min-height: 3825px;
-    	padding: 10px 20px 0;
-		margin-left: 230px;
-		background: #F7F7F7;
-    }
-    </style>
   </head>
   
   <body class="nav-md">
@@ -60,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	<div class="col-md-3 left_col menu_fixed mCustomScrollbar _mCS_1 mCS-autoHide" style="overflow: visible;">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>首页</span></a>
+              <a href="home" class="site_title"><i class="fa fa-paw"></i> <span>首页</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -86,52 +77,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!-- /top navigation -->
 	        
         <!-- page content -->
-        <div class="right_col" role="main" style="min-height: 100%;">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>修改用户信息 </h3>
-              </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>用户信息 </h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <br />
-                    <form id="editUser" action="user/updateUser" method="psot" data-parsley-validate class="form-horizontal form-label-left">
+        <div class="right_col" role="main">
+    	  <div class="">
+    	    <div class="clearfix"></div>
+    		<div class="row">
+    		  <div class="col-md-12">
+    		    <div class="x_panel">
+    		      <div class="x_title">
+    		        <h2>新增用户</h2>
+    		        <div class="clearfix"></div>
+    		      </div>
+    		      <div class="x_content">
+    		        <form id="addUser" action="user/addUser" method="psot" data-parsley-validate class="form-horizontal form-label-left">
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >用户名 <span class="required">*</span>
                         </label>
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" name="userName" value="${userInfo.userName }">
+                          <input id="first-name" name="userName"  
+                          		type="text" required="required" class="form-control col-md-7 col-xs-12" >
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >真实姓名 <span class="required">*</span>
                         </label>
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                          <input type="text" id="last-name" name="realName" required="required" class="form-control col-md-7 col-xs-12" name="realName" value="${userInfo.realName }">
+                          <input type="text" id="last-name" name="realName" required="required" class="form-control col-md-7 col-xs-12" name="realName" >
                         </div>
                       </div>
                       <div class="form-group">
@@ -150,19 +121,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <div class="form-group">
                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">电话号码</label>
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                          <input id="phoneNumber" class="form-control col-md-4 col-xs-12" type="text" name="phoneNumber" value="${userInfo.phoneNumber }">
+                          <input id="phoneNumber" class="form-control col-md-4 col-xs-12" type="text" name="phoneNumber" >
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">电子邮箱</label>
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                          <input id="email" class="form-control col-md-4 col-xs-12" type="text" name="email" value="${userInfo.email }">
+                          <input id="email" class="form-control col-md-4 col-xs-12" type="text" name="email">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">所属公司</label>
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                          <input id="company" class="date-picker form-control col-md-7 col-xs-12" type="text" name="company" value="${userInfo.company }">
+                          <input id="company" class="date-picker form-control col-md-7 col-xs-12" type="text" name="company">
                         </div>
                       </div>
                       <div class="form-group">
@@ -189,14 +160,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       </div>
 					  <input type="hidden" name="userId" value="${userInfo.userId }">
                     </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        
+    		      </div>
+    		    </div>
+    		  </div>
+    		</div>
+    	  </div>
        	<!-- /page content -->
        	
        	<!-- footer content -->
@@ -217,42 +185,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="resources/plugins/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="resources/plugins/nprogress/nprogress.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="resources/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    <script src="resources/plugins/iCheck/icheck.min.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="resources/plugins/moment/min/moment.min.js"></script>
-    <script src="resources/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- bootstrap-wysiwyg -->
-    <script src="resources/plugins/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
-    <script src="resources/plugins/jquery.hotkeys/jquery.hotkeys.js"></script>
-    <script src="resources/plugins/google-code-prettify/src/prettify.js"></script>
-    <!-- jQuery Tags Input -->
-    <script src="resources/plugins/jquery.tagsinput/src/jquery.tagsinput.js"></script>
-    <!-- Switchery -->
-    <script src="resources/plugins/switchery/dist/switchery.min.js"></script>
-    <!-- Select2 -->
-    <script src="resources/plugins/select2/dist/js/select2.full.min.js"></script>
-    <!-- Parsley -->
-    <script src="resources/plugins/parsleyjs/dist/parsley.min.js"></script>
-    <!-- Autosize -->
-    <script src="resources/plugins/autosize/dist/autosize.min.js"></script>
-    <!-- jQuery autocomplete -->
-    <script src="resources/plugins/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
-    <!-- starrr -->
-    <script src="resources/plugins/starrr/dist/starrr.js"></script>
     
     <!-- Custom Theme Scripts -->
     <script src="resources/plugins/custom/js/custom.min.js"></script>
-    
     <script type="text/javascript">
     $(function(){
     	$("#submit-btn").click(function(){
     		$.ajax({
     			type:"post",
-    			url:"user/updateUser",
-    			data:$("#editUser").serialize(),
+    			url:"user/addUser",
+    			data:$("#addUser").serialize(),
     			dataType:"json",
     			success:function(data){
     				if(data.resultCode==1){

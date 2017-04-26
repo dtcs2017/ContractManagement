@@ -22,6 +22,16 @@ public class LoginController extends BaseController {
 		return "index";
 	}
 	
+	/**
+	 * @Description: 登录方法(后期功能：若用户已经登录则先执行登出操作)
+	 * @param @param username
+	 * @param @param password
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author 晓东
+	 * @date 2017年4月26日
+	 */
 	@RequestMapping("/login")
 	public String login(@RequestParam("username") String username,
 			@RequestParam("password") String password){

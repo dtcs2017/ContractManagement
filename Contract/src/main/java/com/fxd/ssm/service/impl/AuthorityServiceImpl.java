@@ -16,7 +16,7 @@ public class AuthorityServiceImpl extends BaseServiceImpl implements AuthoritySe
 	public PageInfo<Authority> getAuthorityList(int pageNo, int pageSize) {
 		PageHelper.startPage(pageNo,pageSize);
 		List<Authority> list=authorityMapper.getAuthorityList();
-		return null;
+		return new PageInfo<Authority>(list);
 	}
 
 }
