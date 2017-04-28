@@ -4,6 +4,7 @@ import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fxd.ssm.service.AuthorityService;
+import com.fxd.ssm.service.ContractService;
 import com.fxd.ssm.service.CustomerService;
 import com.fxd.ssm.service.GoodsService;
 import com.fxd.ssm.service.RoleService;
@@ -29,6 +30,9 @@ public class BaseController {
 	
 	@Autowired
 	protected GoodsService goodsService;
+	
+	@Autowired
+	protected ContractService contractService;
 	
 	public String getShiroUser()
 	{

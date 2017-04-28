@@ -107,6 +107,6 @@
   </select>
   
   <update id="updatePwdByName">
-    update t_user set password=#{newPwd,jdbcType=VARCHAR} where user_name=#{userName,jdbcType=VARCHAR}
+    update t_user set password=#{1} where user_name=#{0}
   </update>
 </mapper>

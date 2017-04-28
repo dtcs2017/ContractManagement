@@ -27,4 +27,8 @@ public interface ContractMapper {
     int updateByPrimaryKeySelective(Contract record);
 
     int updateByPrimaryKey(Contract record);
+
+	List<Contract> getContractList();
+
+	Contract getContractInfoById(Long contractId);
 }

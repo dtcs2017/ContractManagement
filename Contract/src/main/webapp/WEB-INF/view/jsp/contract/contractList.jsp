@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>客户列表</title>
+    <title>合同列表</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		  <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="x_panel">
             <div class="x_title">
-              <h2>客户列表</small></h2>
+              <h2>合同列表</small></h2>
               <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="x_content">
               <div class="well" style="overflow: auto">
-                <form id="queryform" action="customer/getCustomerList" class="form-horizontal" >
+                <form id="queryform" action="contract/getContractList" class="form-horizontal" >
                   <div class="col-sm-3" style="margin-left:-10px" >
                     <label>用户角色</label>
                     <select class="form-control input-sm" name="roleId">
@@ -153,11 +153,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                        <input type="checkbox" id="check-all" class="flat">
 	                      </div>
 	                    </th>
-	                    <th class="column-title">客户名称</th>
-	                    <th class="column-title">客户地址</th>
-	                    <th class="column-title">代理人</th>
-	                    <th class="column-title">手机</th>
-	                    <th class="column-title">开户行</th>
+	                    <th class="column-title">合同编号</th>
+	                    <th class="column-title">合同名称</th>
+	                    <th class="column-title">合同类型</th>
+	                    <th class="column-title">商品名称</th>
+	                    <th class="column-title">甲方</th>
+	                    <th class="column-title">乙方</th>
+	                    <th class="column-title">合同金额</th>
+	                    <th class="column-title">合同状态</th>
 	                    <th class="column-title no-link last"><span class="nobr">操作</span>
 	                    </th>
 	                    <th class="bulk-actions" colspan="7">
@@ -175,7 +178,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                   	  </tr>
 	                      </c:when>
 	                     	<c:otherwise>
-	                     	  <c:forEach items="${cList}" var="customer" varStatus="status">
+	                     	  <c:forEach items="${cList}" var="contract" varStatus="status">
 	                     		<c:if test="${status.count%2==0 }">
 	                     		  <tr class="even pointer">
 	                     		    <td></td>
@@ -184,23 +187,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                     		        <input type="checkbox" class="flat"/>
 	                     		      </div>
 	                     		    </th>
-				                    <td>${customer.customerName }</td>
-				                    <td>${customer.customerAddress }</td>
-				                    <td>${customer.agent }</td>
-				                    <td>${customer.mobileNum }</td>
-				                    <td>${customer.bankName }</td>
+				                    <td>${contract.contractNum }</td>
+				                    <td>${contract.contractName }</td>
+				                    <td>${contract.contractType }</td>
+				                    <td>${contract.goodsName }</td>
+				                    <td>${contract.partyA }</td>
+				                    <td>${contract.partyB }</td>
+				                    <td>${contract.contractAmount }</td>
+				                    <td>${contract.contractState }</td>
 				                    <td class=" last">
 				                      <div class="btn-group">
 				                        <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="View" href="customer/viewCutomer?customerId=${customer.customerId }">
+		                                	data-original-title="View" href="customer/viewContract?contractId=${contract.contractId }">
 		                                  <i class="fa fa-eye"></i>
 		                                </a>
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Edit" href="customer/toUpdateCustomer?customerId=${customer.customerId }">
+		                                	data-original-title="Edit" href="customer/toUpdateContrtact?ContractId=${contract.contractId }">
 		                                  <i class="fa fa-pencil"></i>
 		                                </a>
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Delete" href="javascript:void(0);" onclick="deleteCustomer(${customer.customerId })">
+		                                	data-original-title="Delete" href="javascript:void(0);" onclick="deleteContract(${contract.contractId })">
 		                                  <i class="fa fa-trash"></i>
 		                                </a>
 		                              </div>
@@ -215,23 +221,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                     		        <input type="checkbox" class="flat"/>
 	                     		      </div>
 	                     		    </th>
-		                            <td>${customer.customerName }</td>
-				                    <td>${customer.customerAddress }</td>
-				                    <td>${customer.agent }</td>
-				                    <td>${customer.mobileNum }</td>
-				                    <td>${customer.bankName }</td>
+		                            <td>${contract.contractNum }</td>
+				                    <td>${contract.contractName }</td>
+				                    <td>${contract.contractType }</td>
+				                    <td>${contract.goodsName }</td>
+				                    <td>${contract.partyA }</td>
+				                    <td>${contract.partyB }</td>
+				                    <td>${contract.contractAmount }</td>
+				                    <td>${contract.contractState }</td>
 		                            <td class=" last">
 		                              <div class="btn-group">
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="View" href="customer/viewCutomer?customerId=${customer.customerId }">
+		                                	data-original-title="View" href="customer/viewContract?contractId=${contract.contractId }">
 		                                  <i class="fa fa-eye"></i>
 		                                </a>
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Edit" href="customer/toUpdateCustomer?customerId=${customer.customerId }">
+		                                	data-original-title="Edit" href="customer/toUpdateContrtact?ContractId=${contract.contractId }">
 		                                  <i class="fa fa-pencil"></i>
 		                                </a>
 		                                <a class="btn btn-sm btn-default" data-placement="top" data-toggle="tooltip" 
-		                                	data-original-title="Delete" href="javascript:void(0);" onclick="deleteCustomer(${customer.customerId })">
+		                                	data-original-title="Delete" href="javascript:void(0);" onclick="deleteContract(${contract.contractId })">
 		                                  <i class="fa fa-trash"></i>
 		                                </a>
 		                              </div>
@@ -290,16 +299,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="resources/plugins/custom/js/custom.min.js"></script>
     
     <script type="text/javascript">
-      function deleteRole(authorityId){
+      function deleteRole(contractId){
     	  $.ajax({
   			type:"post",
-  			url:"authority/deleteAuthority",
-  			data:{'authorityId':authorityId},
+  			url:"contract/deleteContract",
+  			data:{'contractId':contractId},
   			dataType:"json",
   			success:function(data){
   				if(data.resultCode==1){
   					alert("删除成功");
-  					window.location.href="authority/getAuthorityList";
+  					window.location.href="contract/getContractList";
   				}
   			}
   		});

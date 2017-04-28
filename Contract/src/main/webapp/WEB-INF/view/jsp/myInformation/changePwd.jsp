@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >新密码 <span class="required">*</span>
                         </label>
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                          <input type="password" id="newPwd" name="newPwd" required="required" class="form-control col-md-7 col-xs-12" name="realName" >
+                          <input type="password" id="newPwd" name="newPwd" required="required" class="form-control col-md-7 col-xs-12" >
                         </div>
                       </div>
                       <div class="form-group">

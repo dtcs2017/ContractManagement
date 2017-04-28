@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fxd.ssm.dao.AuthorityMapper;
+import com.fxd.ssm.dao.ContractMapper;
 import com.fxd.ssm.dao.CustomerMapper;
 import com.fxd.ssm.dao.GoodsMapper;
 import com.fxd.ssm.dao.RoleMapper;
@@ -21,4 +22,6 @@ public class BaseServiceImpl implements BaseService {
 	protected CustomerMapper customerMapper;
 	@Autowired
 	protected GoodsMapper goodsMapper;
+	@Autowired 
+	protected ContractMapper contractMapper;
 }
